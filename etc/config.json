@@ -1,0 +1,28 @@
+{
+    "contact": {
+        "pager": "mitchell.pager@sharecare.com",
+        "email": "mitchell.broome@gmail.com"
+    },
+    "monitor": {
+        "atolevel": {
+            "function": "readswitch",
+            "trigger": "off",
+            "alert": "email",
+            "description": "ato level alert"
+        },
+        "salttanktemp": {
+           "function": "readtemp",
+           "probe": "28-000006c53de6"
+        },
+        "basementtemp": {
+           "function": "readtemp",
+           "probe": "28-000006c56a09"
+        }
+    },
+    "pinout": {
+        "atolevel": {
+            "pin": 10,
+            "type": "input"
+        }
+    }
+}
