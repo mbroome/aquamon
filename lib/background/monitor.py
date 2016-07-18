@@ -19,6 +19,7 @@ import background.readtemp
 logger = logging.getLogger('aquamon.' + __name__)
 
 data = {}
+interval = 300
 
 class Monitor(threading.Thread):
    def __init__(self):
@@ -44,7 +45,7 @@ class Monitor(threading.Thread):
 
                #pp.pprint(response)
                data[monitor] = response
-         time.sleep(30)
+         time.sleep(interval)
 
 
 def cleanup():
