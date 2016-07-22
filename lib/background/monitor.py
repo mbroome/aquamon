@@ -15,16 +15,17 @@ from infrastructure.exceptions import *
 import application
 import background.readswitch
 import background.readtemp
+import infrastructure.httpreq
 
 logger = logging.getLogger('aquamon.' + __name__)
 
-data = {}
 interval = 300
 
 class Monitor(threading.Thread):
    def __init__(self):
       self.threadName = 'Monitor'
 
+      self.req = infrastructure.httpreq.HTTPReq()
       self.probes = {}
       self.probes['readswitch'] = background.readswitch.Check()
       self.probes['readtemp'] = background.readtemp.Check()
@@ -35,6 +36,7 @@ class Monitor(threading.Thread):
       logger.info('starting the monitor run loop: %s' % self.threadName)
 
       while True:
+         data = []
          for monitor in application.Config.config['monitor']:
             response = {}
             if self.probes.has_key(application.Config.config['monitor'][monitor]['function']) and not application.Config.config['monitor'][monitor].has_key('disabled'):
@@ -44,9 +46,20 @@ class Monitor(threading.Thread):
                   pp.pprint(e)
 
                #pp.pprint(response)
-               data[monitor] = response
+               data.append(response)
+         self.post(data)
          time.sleep(interval)
 
+   def post(self, data):
+      url = 'https://aquamon-1376.appspot.com/keystore'
+      pp.pprint(data)
+
+      request = {}
+      for rec in data:
+         request[rec['point']] = rec['value']
+      pp.pprint(request)
+      r = self.req.put(url, json.dumps(request))
+      pp.pprint(r)
 
 def cleanup():
    print 'cleanup!'

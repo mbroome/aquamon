@@ -31,7 +31,7 @@ class Check():
       if self.states[status] == config['trigger']:
          print 'Trigger happend!'
          model.sendemail.send(application.Config.config['contact'][config['alert']], config['description'], config['description'])
-      data = {'monitor': monitor, 'status': self.states[status], 'polltime': time.time()}
+      data = {'point': monitor, 'value': status, 'polltime': time.time()}
       return(data)
 
    def pinSetup(self, monitor):

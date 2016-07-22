@@ -36,7 +36,7 @@ class Check():
                temp_c = float(measurement) / 1000.0
                temp_f = temp_c * 9.0 / 5.0 + 32.0
 
-               data = {'monitor': monitor, 'temperature': temp_f, 'polltime': time.time()}
+               data = {'point': monitor, 'value': temp_f, 'polltime': time.time()}
       except Exception, e:
          pp.pprint(e)
 
