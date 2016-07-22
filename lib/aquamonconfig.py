@@ -23,6 +23,8 @@ class Config():
       self.installDir = os.path.dirname(__file__) + '/../'
       self.config = {}
 
+      self.load()
+
    # load up some configs
    def load(self):
       self.config = self.loadJSON(self.installDir + '/etc/config.json')
