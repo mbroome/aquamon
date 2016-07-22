@@ -33,5 +33,5 @@ class Config():
       data = json.loads(contents)
       return(data)
 
-
+config = Config()
 

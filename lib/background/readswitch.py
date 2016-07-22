@@ -10,7 +10,7 @@ import pprint
 pp = pprint.PrettyPrinter(indent=4)
 
 from infrastructure.exceptions import *
-import application
+from aquamonconfig import config as Config
 import model.sendemail
 
 from background.gpiostate import STATUS as GPIOStatus
@@ -30,12 +30,12 @@ class Check():
       status = GPIO.input(pin)
       if self.states[status] == config['trigger']:
          print 'Trigger happend!'
-         model.sendemail.send(application.Config.config['contact'][config['alert']], config['description'], config['description'])
+         model.sendemail.send(Config.config['contact'][config['alert']], config['description'], config['description'])
       data = {'point': monitor, 'value': status, 'polltime': time.time()}
       return(data)
 
    def pinSetup(self, monitor):
-      pinConfig = application.Config.config['pinout'][monitor]
+      pinConfig = Config.config['pinout'][monitor]
       if not GPIOStatus.has_key(pinConfig['pin']):
          GPIO.setup(pinConfig['pin'], GPIO.IN)
          GPIOStatus[pinConfig['pin']] = True

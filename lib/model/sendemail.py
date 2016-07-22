@@ -7,13 +7,13 @@ from email.mime.text import MIMEText
 import time
 import json
 
-import application
+from aquamonconfig import config as Config
 
 def send(to, subject, msg):
    import smtplib
 
-   gmail_user = application.Config.gmail['user']
-   gmail_pwd = application.Config.gmail['key']
+   gmail_user = Config.gmail['user']
+   gmail_pwd = Config.gmail['key']
 
    FROM = 'mitchell.broome@gmail.com'
    TO = [to]

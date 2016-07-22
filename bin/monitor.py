@@ -13,7 +13,6 @@ pp = pprint.PrettyPrinter(indent=4)
 scriptPath = os.path.realpath(os.path.dirname(sys.argv[0]))
 sys.path.append(scriptPath + '/../lib/')
 
-import application
 import background.monitor
 
 logger = logging.getLogger('aquamon')
@@ -28,7 +27,6 @@ def parseArgs():
 if __name__ == '__main__':
    args = parseArgs()
 
-   application.Config.load()
    mon = background.monitor.Monitor()
    mon.daemon = True
 

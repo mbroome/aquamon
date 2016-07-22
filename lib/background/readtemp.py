@@ -10,8 +10,6 @@ pp = pprint.PrettyPrinter(indent=4)
 
 from infrastructure.exceptions import *
 
-import application
-
 logger = logging.getLogger('aquamon.' + __name__)
 
 

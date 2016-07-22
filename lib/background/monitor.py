@@ -12,7 +12,7 @@ pp = pprint.PrettyPrinter(indent=4)
 
 from infrastructure.exceptions import *
 
-import application
+from aquamonconfig import config as Config
 import background.readswitch
 import background.readtemp
 import infrastructure.httpreq
@@ -37,11 +37,11 @@ class Monitor(threading.Thread):
 
       while True:
          data = []
-         for monitor in application.Config.config['monitor']:
+         for monitor in Config.config['monitor']:
             response = {}
-            if self.probes.has_key(application.Config.config['monitor'][monitor]['function']) and not application.Config.config['monitor'][monitor].has_key('disabled'):
+            if self.probes.has_key(Config.config['monitor'][monitor]['function']) and not Config.config['monitor'][monitor].has_key('disabled'):
                try:
-                  response = self.probes[application.Config.config['monitor'][monitor]['function']].check(monitor, application.Config.config['monitor'][monitor])
+                  response = self.probes[Config.config['monitor'][monitor]['function']].check(monitor, Config.config['monitor'][monitor])
                except Exception, e:
                   pp.pprint(e)
 
