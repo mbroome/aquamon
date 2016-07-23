@@ -38,7 +38,10 @@ pointCount = 0
 for channel in config[args.entry]['channels']:
    points = createSteps(config[args.entry]['channels'][channel]['from'], 4096*int(config[args.entry]['channels'][channel]['to'])/100, int(timeframe) * 4)
    pointCount = len(points)
-   data[channel] = points
+   if config[args.entry]['direction'] == 'down':
+      data[channel] = points.reverse()
+   else:
+      data[channel] = points
 
 pwm = PWM(0x40)
 pwm.setPWMFreq(100)

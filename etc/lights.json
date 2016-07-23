@@ -18,6 +18,29 @@
                 "to": 20
             }
         },
+        "direction": "up",
+        "span": 30
+    },
+    "eveningoff": {
+        "channels": {
+            "0": {
+                "from": 20,
+                "to": 40
+            },
+            "1": {
+                "from": 20,
+                "to": 40
+            },
+            "2": {
+                "from": 20,
+                "to": 30
+            },
+            "3": {
+                "from": 10,
+                "to": 20
+            }
+        },
+        "direction": "down",
         "span": 30
     }
 }
