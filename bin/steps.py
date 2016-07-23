@@ -36,10 +36,19 @@ timeframe = config[args.entry]['span']
 data = {}
 pointCount = 0
 for channel in config[args.entry]['channels']:
-   points = createSteps(config[args.entry]['channels'][channel]['from'], 4096*int(config[args.entry]['channels'][channel]['to'])/100, int(timeframe) * 4)
+   rev = False
+   if config[args.entry]['channels'][channel]['from'] > config[args.entry]['channels'][channel]['to']:
+      s = config[args.entry]['channels'][channel]['to']
+      e = config[args.entry]['channels'][channel]['from']
+      rev = True
+   else:
+      s = config[args.entry]['channels'][channel]['from']
+      e = config[args.entry]['channels'][channel]['to']
+   points = createSteps(int(s), 4096*int(e)/100, int(timeframe) * 4)
+   #del(points[0])
    pointCount = len(points)
-   if config[args.entry]['direction'] == 'down':
-      data[channel] = points.reverse()
+   if rev:
+      data[channel] = points[::-1]
    else:
       data[channel] = points
 
@@ -47,8 +56,8 @@ pwm = PWM(0x40)
 pwm.setPWMFreq(100)
 
 start = time.time()
-for channel in data:
-   for c in range(0, pointCount):
-      pwm.setPWM(int(p), 0, int(data[channel][c]))
+for c in range(0, pointCount):
+   for channel in data:
+      pwm.setPWM(int(channel), 0, int(data[channel][c]))
    time.sleep(0.25)
 
