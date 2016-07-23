@@ -1,5 +1,26 @@
 {
-    "eveningon": {
+    "morning-moon-on": {
+        "channels": {
+            "0": {
+                "from": 0,
+                "to": 10
+            },
+            "1": {
+                "from": 0,
+                "to": 10
+            },
+            "2": {
+                "from": 0,
+                "to": 0
+            },
+            "3": {
+                "from": 0,
+                "to": 0
+            }
+        },
+        "span": 120
+    },
+    "morning-feed": {
         "channels": {
             "0": {
                 "from": 10,
@@ -10,17 +31,80 @@
                 "to": 40
             },
             "2": {
+                "from": 0,
+                "to": 20
+            },
+            "3": {
+                "from": 0,
+                "to": 10
+            }
+        },
+        "span": 120
+    },
+    "morning-moon-off": {
+        "channels": {
+            "0": {
+                "from": 40,
+                "to": 10
+            },
+            "1": {
+                "from": 40,
+                "to": 10
+            },
+            "2": {
+                "from": 20,
+                "to": 0
+            },
+            "3": {
                 "from": 10,
-                "to": 30
+                "to": 0
+            }
+        },
+        "span": 120
+    },
+    "afternoon-on": {
+        "channels": {
+            "0": {
+                "from": 10,
+                "to": 20
+            },
+            "1": {
+                "from": 10,
+                "to": 20
+            },
+            "2": {
+                "from": 0,
+                "to": 20
+            },
+            "3": {
+                "from": 0,
+                "to": 10
+            }
+        },
+        "span": 120
+    },
+    "evening-on": {
+        "channels": {
+            "0": {
+                "from": 20,
+                "to": 40
+            },
+            "1": {
+                "from": 20,
+                "to": 40
+            },
+            "2": {
+                "from": 20,
+                "to": 40
             },
             "3": {
                 "from": 10,
                 "to": 20
             }
         },
-        "span": 30
+        "span": 120
     },
-    "eveningoff": {
+    "evening-moon": {
         "channels": {
             "0": {
                 "from": 40,
@@ -31,7 +115,7 @@
                 "to": 20
             },
             "2": {
-                "from": 30,
+                "from": 40,
                 "to": 0
             },
             "3": {
@@ -39,27 +123,27 @@
                 "to": 0 
             }
         },
-        "span": 30
+        "span": 120
     },
-    "eveningmoon": {
+    "evening-moon-off": {
         "channels": {
             "0": {
-                "from": 40,
-                "to": 30
+                "from": 20,
+                "to": 0
             },
             "1": {
-                "from": 40,
-                "to": 30
+                "from": 20,
+                "to": 0
             },
             "2": {
-                "from": 30,
+                "from": 0,
                 "to": 0
             },
             "3": {
-                "from": 20,
+                "from": 0,
                 "to": 0
             }
         },
-        "span": 30
+        "span": 120
     }
 }
